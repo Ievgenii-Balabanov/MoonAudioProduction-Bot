@@ -943,7 +943,7 @@ def get_user_message(message):
 
     else:
         chat_bot.send_message(message.chat.id, "I'm sorry, but I don't understand you... 😞/ Вибач, але я не розумію "
-                                               "тебе...😞(", parse_mode="html")
+                                               "тебе... 😞(", parse_mode="html")
 
 
 if __name__ == '__main__':
