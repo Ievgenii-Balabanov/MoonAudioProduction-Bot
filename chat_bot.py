@@ -55,7 +55,7 @@ def ua_start(message):
     greeting_message = f"Привіт, <b>{message.from_user.first_name} {message.from_user.last_name}</b>. " \
                        f"MoonAudioProduction чат-бот радий вітати тебе! " \
                        f"Наші авторські звукові ефекти та оркестрова музика забезпечать якісно належне акустичне " \
-                       f"оформлення Вашого проекту що вигідно вирізнятиме його з-поміж інших!"
+                       f"оформлення Вашого проєкту що вигідно вирізнятиме його з-поміж інших!"
     chat_bot.send_message(message.chat.id, greeting_message, parse_mode="html", reply_markup=markup)
     file = open("static/images/home_moon.png", "rb")
     chat_bot.send_photo(message.chat.id, file, reply_markup=markup)
@@ -664,7 +664,7 @@ def get_user_message(message):
         greeting_message = f"Привіт, <b>{message.from_user.first_name} {message.from_user.last_name}</b>. " \
                            f"MoonAudioProduction чат-бот радий вітати тебе! " \
                            f"Наші авторські звукові ефекти та оркестрова музика забезпечать якісно належне акустичне " \
-                           f"оформлення Вашого проекту що вигідно вирізнятиме його з-поміж інших!"
+                           f"оформлення Вашого проєкту що вигідно вирізнятиме його з-поміж інших!"
         chat_bot.send_message(message.chat.id, greeting_message, parse_mode="html", reply_markup=markup)
         file = open("static/images/home_moon.png", "rb")
         chat_bot.send_photo(message.chat.id, file, reply_markup=markup)
