@@ -397,7 +397,8 @@ def whooshes_page(message):
 
 
 @chat_bot.message_handler(
-    func=lambda message: message.text in ["Транзішнс", "транзішнс", "транзішн", "транзішн", "Вуш", "вуш", "Вушаки", "вушаки"]
+    func=lambda message: message.text in ["Транзішнс", "транзішнс", "транзішн", "транзішн", "Вуш", "вуш", "Вушаки",
+                                          "вушаки"]
 )
 def whooshes_page(message):
     whooshes_text = "<b>Дана колекція містить величезну кількість разноманітних звукових ефектів переходу</b>"
