@@ -1,4 +1,5 @@
 import os
+import time
 
 import telebot
 from telebot import types
@@ -502,6 +503,47 @@ def christmas_music_page(message):
     chat_bot.send_photo(
         message.chat.id, christmas_image, caption=christmas_text, parse_mode="html", reply_markup=markup
     )
+
+    time.sleep(2)
+    markup = types.InlineKeyboardMarkup()
+    markup.add(
+        types.InlineKeyboardButton(
+            "Sure, why not?", callback_data="Sure, why not?"
+        ),
+        types.InlineKeyboardButton(
+            "No, I’m not interested", callback_data="No, I’m not interested"
+        )
+    )
+    chat_bot.send_message(message.chat.id, "Can I ask you something? 👀",
+                          reply_markup=markup)
+
+
+@chat_bot.callback_query_handler(func=lambda callback: True)
+def callback_message(callback):
+    if callback.data == "Sure, why not?":
+        sticker = open("static/stickers/great.tgs", 'rb')
+        chat_bot.send_sticker(callback.message.chat.id, sticker)
+        markup = types.InlineKeyboardMarkup()
+        markup.add(
+            types.InlineKeyboardButton(
+                "Carol of the Bells",
+                url="https://audiojungle.net/item/carol-of-the-bells/25166035"
+            ),
+            types.InlineKeyboardButton(
+                "Nah, maybe next time...", callback_data="Nah, maybe next time..."
+            )
+        )
+        chat_bot.send_message(callback.message.chat.id, "Great. I’m glad to hear it! I see you’re looking for Christmas"
+                                                        " music. Might you be interested in my favorite song?",
+                              reply_markup=markup)
+
+    elif callback.data == "No, I’m not interested":
+        chat_bot.send_message(callback.message.chat.id, "Sorry about that!")
+
+    elif callback.data == "Nah, maybe next time...":
+        sticker = open("static/stickers/no_problem.tgs", 'rb')
+        chat_bot.send_sticker(callback.message.chat.id, sticker)
+        chat_bot.send_message(callback.message.chat.id, "It's a pity, but no problems")
 
 
 @chat_bot.message_handler(
